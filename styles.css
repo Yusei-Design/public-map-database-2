@@ -1,0 +1,164 @@
+:root {
+  --c-bg: #f3f3f3;
+  --c-text: #2c2c2c;
+  --c-ui: rgba(255,255,255,0.92);
+  --shadow: 0 8px 24px rgba(0,0,0,0.10);
+}
+
+html, body { height: 100%; margin: 0; }
+#map { position: fixed; inset: 0; }
+
+/* ===== Filter UI ===== */
+.filter-bar {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.filter-chips {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  pointer-events: auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 2px;
+}
+
+.filter-chip {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--c-ui);
+  color: var(--c-text);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 32px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+}
+
+.filter-chip.is-active {
+  background: var(--c-text);
+  color: #fff;
+}
+
+/* 3Dボタンだけ少し区切る（既存見た目に影響しない範囲） */
+.filter-chip--3d {
+  margin-left: 6px;
+}
+
+/* ===== Count UI ===== */
+.count-bar {
+  position: fixed;
+  top: 60px;
+  right: 16px;
+  z-index: 10;
+  background: var(--c-ui);
+  border-radius: 16px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  color: var(--c-text);
+}
+
+.count-number { font-size: 24px; font-weight: 800; line-height: 1; }
+.count-label { margin-top: 8px; font-size: 12px; font-weight: 600; line-height: 1; }
+
+/* ===== FAB ===== */
+.fab-btn {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--c-text);
+  color: #fff;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* ===== Info panel ===== */
+.info-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 86px;
+  width: 320px;
+  max-height: 60vh;
+  overflow: auto;
+  background: var(--c-ui);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 14px 14px 18px;
+  z-index: 11;
+  display: none;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(0,0,0,0.06);
+  cursor: pointer;
+}
+
+/* ===== Lightbox ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.lightbox img {
+  max-width: min(92vw, 980px);
+  max-height: 86vh;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+/* ===== Marker（重要：外側に transition: transform を付けない） ===== */
+.marker-wrap {
+  width: 0;
+  height: 0;
+}
+
+.custom-marker {
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  margin-top: -22px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  display: grid;
+  place-items: center;
+}
+
+.marker-icon {
+  width: 70%;
+  height: 70%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* popup */
+.maplibregl-popup-content {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
